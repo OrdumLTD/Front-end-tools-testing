@@ -1,0 +1,41 @@
+{
+  "name": "OrdumTestClient",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build && next export",
+    "dev": "next dev",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@phala/sdk": "workspace:packages/sdk",
+    "@phala/typedefs": "^0.2.32",
+    "@polkadot/api": "9.8.1",
+    "@polkadot/api-contract": "9.8.1",
+    "@polkadot/extension-dapp": "^0.44.6",
+    "@polkadot/util": "^10.1.12",
+    "baseui": "^11.1.1",
+    "jotai": "^2.0.1",
+    "jotai-optics": "^0.3.0",
+    "next": "12.3.1",
+    "optics-ts": "^2.4.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "styletron-engine-atomic": "^1.5.0",
+    "styletron-react": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.50",
+    "@types/styletron-engine-atomic": "^1.1.1",
+    "@types/styletron-react": "^5.0.3",
+    "@types/styletron-standard": "^2.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.23.1",
+    "eslint-config-next": "12.3.1",
+    "eslint-plugin-baseui": "^11.1.1",
+    "typescript": "4.8.4"
+  }
+}
