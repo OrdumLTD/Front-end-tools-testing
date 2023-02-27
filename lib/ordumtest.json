@@ -240,7 +240,7 @@
             }
           ],
           "docs": [],
-          "label": "CreateProfile::create_applicant_profile",
+          "label": "create_applicant_profile",
           "mutates": true,
           "payable": false,
           "returnType": {
@@ -300,7 +300,7 @@
             }
           ],
           "docs": [],
-          "label": "CreateProfile::create_issuer_profile",
+          "label": "create_issuer_profile",
           "mutates": true,
           "payable": false,
           "returnType": {
@@ -333,7 +333,7 @@
             }
           ],
           "docs": [],
-          "label": "CreateProfile::update_keys",
+          "label": "update_keys",
           "mutates": true,
           "payable": false,
           "returnType": {
@@ -384,7 +384,7 @@
             }
           ],
           "docs": [],
-          "label": "CreateProfile::update_issuer_profile",
+          "label": "update_issuer_profile",
           "mutates": true,
           "payable": true,
           "returnType": {

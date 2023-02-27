@@ -15,9 +15,9 @@ const Layout: FC<{ title?: string }> = ({ title, children }) => {
   const displayTitle = "ORDUM";
 
   return (
-    <Block width="100%" maxWidth="768px" margin="0 auto" padding="0 16px 24px">
+    <Block width="100%" padding="0 50px 2px" backgroundColor="white">
       <Head>
-        <title>{displayTitle}</title>
+        <title >{displayTitle}</title>
       </Head>
 
       <Block
@@ -42,7 +42,7 @@ const Layout: FC<{ title?: string }> = ({ title, children }) => {
               />
             </Link>
           )}
-          <HeadingXLarge as="div">{displayTitle}</HeadingXLarge>
+          <HeadingXLarge  as="div">{displayTitle}</HeadingXLarge>
         </Block>
         {isClient && <AccountSelect></AccountSelect>}
       </Block>

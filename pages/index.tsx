@@ -3,10 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 import { ListItem, ListItemLabel } from "baseui/list";
 import { StyledLink } from "baseui/link";
+import styles from "../styles/mainapp.module.css"
 
-const LINKS: [string, string][] = [
-  ["/create-applicant", "Create Applicant Profile"],  
-];
+ const label =  "Sign up"
+const href = "/create-applicant"
 
 const Home: NextPage = () => {
   return (
@@ -15,18 +15,17 @@ const Home: NextPage = () => {
         <title>ORDUM</title>
       </Head>
 
-      <ol>
-        <p>hello</p>
-        {LINKS.map(([href, label], index) => (
-          <ListItem key={label} artwork={() => index + 1}>
-            <ListItemLabel>
-              <Link href={href} passHref>
-                <StyledLink>{label}</StyledLink>
-              </Link>
-            </ListItemLabel>
-          </ListItem>
-        ))}
-      </ol>
+      <div className={styles.DivHomeLog}> 
+      <h2>Welcome to Ordum, Polkadot and Kusama Grant aggregator</h2>
+          <button>DID</button>
+          <button>
+            <Link href={href} passHref>
+              <StyledLink>{label}</StyledLink>
+            </Link>
+          </button>
+        <h2>New to blockchain?</h2>
+        <button>Create wallet</button>
+      </div>
     </div>
   );
 };

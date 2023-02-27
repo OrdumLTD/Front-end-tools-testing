@@ -1,9 +1,123 @@
 .HomePage{
-    background-color: gainsboro;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content:start;
     align-items: start;
     width: 100%;
-    height: 550px;
+    height: 582px;
+}
+
+.ProfileDiv{
+    background-color: white;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+}
+
+
+.Profile{
+    background-color: whitesmoke;
+    height: 400px;
+    width: 800px;
+    padding: 20px;
+}
+.DivHomeLog{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.DivHomeLog > h2{
+    font-family: sans-serif;
+    font-weight: 400;
+}
+.DivHomeLog > button{
+    padding: 10px;
+    width: 200px;
+    margin: 10px;
+    background-color: transparent;
+}
+.Btn{
+    background-color: black;
+    color: white;
+    width: 200px;
+    border: 0;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+}
+.btnlink{
+    background-color: whitesmoke;
+    width: 150px;
+    height: auto;
+    padding: 10px;
+}
+.button{
+    background-color: black;
+    margin: 20px;
+    display: flex;
+    color: white;
+    height: 30px;
+    width: 100px;
+    border: 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+.FormDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.createProf{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: -2;
+    margin-bottom: 20px;
+}
+.Form{
+    
+    display: flex;
+    width: 400px;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.Appl1,.Appl2{
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+    background-color:whitesmoke;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.greybtn {
+   
+    width: 150px;
+    height: 40px;
+    border: 0;
+    background-color: gainsboro;
+    color: black;
+}
+.darkbtn{
+    width: 150px;
+    height: 40px;
+    border: 0;
+    background-color: black;
+    color: white;
 }

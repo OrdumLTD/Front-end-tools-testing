@@ -9,9 +9,15 @@ import { useEffect, useState } from "react";
 import { default as accountAtom } from "../atoms/account";
 import ContractLoader from "../components/ContractLoader";
 import { getSigner } from "../lib/polkadotExtension";
+import { FormControl } from "baseui/form-control";
+import { Input } from "baseui/input";
+import { StyledLink } from "baseui/link";
+import Link from "next/link";
+
 
 // CSS
 import styles from "../styles/mainapp.module.css";
+import { Textarea } from "baseui/textarea";
 
 
 const CreateApplicantProfile: Page = () => {
@@ -22,16 +28,23 @@ const CreateApplicantProfile: Page = () => {
   const [applicantResult, setApplicantResult] = useState<any>();
   const [events, setEvents] = useState<any>();
 
+  //form
+  const [name, setName] = useState<string>();
+  const [description, setDescription] = useState<string>();
+  const [ptype, setPtype] = useState<string>()
+  const [mission, setMission] = useState<string>();
+  const [size, setSize] = useState<string>();
+
   useEffect(() => () => {
       api?.disconnect();
     },
     [api]
   );
 
-  useEffect(() => {
+ /* useEffect(() => {
     setCertificateData(undefined);
   }, [account]);
-
+*/
   const onSignCertificate = async () => {
     if (account && api) {
       try {
@@ -63,6 +76,11 @@ const CreateApplicantProfile: Page = () => {
     toaster.info(JSON.stringify(output?.toHuman()), {});
   };
 
+
+
+  const sizenum = size;
+  const resize :number = +sizenum; 
+
   const onCommand = async () => {
     if (!contract || !account || !certificateData) return;
     const signer = await getSigner(account);
@@ -70,12 +88,12 @@ const CreateApplicantProfile: Page = () => {
     const { gasRequired, storageDeposit } = await contract.query.createApplicantProfile(
       certificateData as any,
       {},
-      "Mrisho",
-      null,
-      1,
-      "Legions",
-      null,
-      []
+        name,
+        null,
+        resize,
+        description,
+        null,
+        []
     );
     console.log(storageDeposit);
     
@@ -87,14 +105,14 @@ const CreateApplicantProfile: Page = () => {
         : null,
     };
 
-    
+     
 
     contract.tx
       .createApplicantProfile(options,
-        "Mrisho",
+        name,
         null,
-        1,
-        "Legions",
+        resize,
+        description,
         null,
         []
       )
@@ -109,29 +127,128 @@ const CreateApplicantProfile: Page = () => {
       });
   };
 
+  const href = "/profile";
+  const label = "Profile"
   return contract ? (
     <main className={styles.HomePage}>
-      
-        <Button disabled={!account} onClick={onSignCertificate}>
+        <button className={styles.button} disabled={!account} onClick={onSignCertificate}>
           Sign In
-        </Button>
-        <Button disabled={!certificateData} onClick={onQuery}>
-          View Profile
-        </Button>
-        <Button disabled={!account} onClick={onCommand}>
+        </button>
+        <button className={styles.btnlink}>
+          <Link href={href} passHref>
+              <StyledLink>{label}</StyledLink>
+          </Link>
+        </button>
+       
+      <div className={styles.FormDiv}>
+        <div className={styles.createProf}>
+          <h1>Sign Up</h1>
+          <span>Create your profile</span>
+        </div>
+        <span>Are you an organisation or an individual</span>
+        <div className={styles.Appl1}>
+            <button className={styles.darkbtn}>Organization</button>
+            <button className={styles.greybtn}>Individual</button>
+        </div>
+        <span>Are you an applicant or foundation</span>
+        <div className={styles.Appl2}>
+            <button className={styles.darkbtn}>Applicant</button>
+            <button className={styles.greybtn}>Foundation</button>
+        </div>
+      
+        <div className={styles.Form}>
+        <FormControl label="Name">
+          <Input
+            placeholder="Ordum"
+              overrides={{
+                Input: {
+                  style: {
+                    fontFamily: "San Serif",
+                    backgroundColor:"white",
+                  },
+                },
+              }}
+          value={name}
+          onChange={(e) => setName(e.currentTarget.value)}
+          ></Input>
+        </FormControl>
+
+        <FormControl label="Description">
+          <Textarea
+            placeholder="Expect Chaos"
+              overrides={{
+                Input: {
+                  style: {
+                    fontFamily: "San Serif",
+                    
+                    backgroundColor:"white",
+                    
+                  },
+                },
+              }}
+              value={description}
+              onChange={(e) => setDescription(e.currentTarget.value)}
+          ></Textarea>
+          </FormControl>
+          <FormControl label="Mission">
+          <Textarea
+            placeholder="Expect Chaos"
+              overrides={{
+                Input: {
+                  style: {
+                    fontFamily: "San Serif",
+                    
+                    backgroundColor:"white",
+                    
+                  },
+                },
+              }}
+              value={mission}
+              onChange={(e) => setMission(e.currentTarget.value)}
+          ></Textarea>
+          </FormControl>
+          <FormControl label="Project Type">
+          <Input
+            placeholder="Public good"
+              overrides={{
+                Input: {
+                  style: {
+                    fontFamily: "San Serif",
+                    
+                    backgroundColor:"white",
+                    
+                  },
+                },
+              }}
+              value={ptype}
+              onChange={(e) => setPtype(e.currentTarget.value)}
+          ></Input>
+          </FormControl>
+          <FormControl label="Team size">
+          <Input
+            placeholder="eg 2"
+              overrides={{
+                Input: {
+                  style: {
+                    fontFamily: "San Serif",
+                    
+                    backgroundColor:"white",
+                    
+                  },
+                },
+              }}
+              value={size}
+              onChange={(e) => setSize(e.currentTarget.value)}
+          ></Input>
+          </FormControl>
+          <Button onClick={onCommand}>
           Create Profile
         </Button>
+        </div>
+      </div>
+        
             
-            <div>
-                <p>name: {applicantResult?.Ok.name}</p>
-                <p>team size: {applicantResult?.Ok.teamSize}</p>
-                <p>account Id: {applicantResult?.Ok.accountId}</p>
-                <p>description: {applicantResult?.Ok.description}</p>
-            </div>
-            
-            <div> 
-              <h2>Register Team</h2>
-            </div>
+           
           
     </main>
   ) : (
